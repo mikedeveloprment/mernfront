@@ -1,44 +1,56 @@
-import React from 'react';
-import Button from '@mui/material/Button';
+import React from "react";
+import Button from "@mui/material/Button";
 
-import styles from './Header.module.scss';
-import Container from '@mui/material/Container';
+import styles from "./Header.module.scss";
+import Container from "@mui/material/Container";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectorIsSign } from "../../redux/slisec/signSlice";
 
 export const Header = () => {
-  const isAuth = false;
+	const isSign   = useSelector(selectorIsSign);
+	const disp = useDispatch();
 
-  const onClickLogout = () => {};
+	const onClickLogout = () => {
+		disp(logout());
+		window.localStorage.removeItem("token-sign")
 
-  return (
-    <div className={styles.root}>
-      <Container maxWidth="lg">
-        <div className={styles.inner}>
-          <a className={styles.logo} href="/">
-            <div>ARCHAKOV BLOG</div>
-          </a>
-          <div className={styles.buttons}>
-            {isAuth ? (
-              <>
-                <a href="/posts/create">
-                  <Button variant="contained">Написать статью</Button>
-                </a>
-                <Button onClick={onClickLogout} variant="contained" color="error">
-                  Выйти
-                </Button>
-              </>
-            ) : (
-              <>
-                <a href="/login">
-                  <Button variant="outlined">Войти</Button>
-                </a>
-                <a href="/register">
-                  <Button variant="contained">Создать аккаунт</Button>
-                </a>
-              </>
-            )}
-          </div>
-        </div>
-      </Container>
-    </div>
-  );
+	};
+
+	return (
+		<div className={styles.root}>
+			<Container maxWidth="lg">
+				<div className={styles.inner}>
+					<Link className={styles.logo} to="/">
+						<div>Mikel Blog</div>
+					</Link>
+					<div className={styles.buttons}>
+						{isSign ? (
+							<>
+								<Link to="/create">
+									<Button variant="contained">Написать статью</Button>
+								</Link>
+								<Button
+									onClick={onClickLogout}
+									variant="contained"
+									color="error"
+								>
+									Выйти
+								</Button>
+							</>
+						) : (
+							<>
+								<Link to="/sign">
+									<Button variant="outlined">Войти</Button>
+								</Link>
+								<Link to="/login">
+									<Button variant="contained">Создать аккаунт</Button>
+								</Link>
+							</>
+						)}
+					</div>
+				</div>
+			</Container>
+		</div>
+	);
 };
