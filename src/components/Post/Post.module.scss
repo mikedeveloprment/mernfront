@@ -50,13 +50,11 @@ $blue: #4361ee;
   }
 }
 
-.indention {
-  padding-left: 40px;
-}
 
 .title {
   font-size: 28px;
   margin: 0;
+  white-space: wrap;
 
   a {
     text-decoration: none;
