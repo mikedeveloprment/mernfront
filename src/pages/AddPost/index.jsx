@@ -48,8 +48,8 @@ export const AddPost = () => {
 			const fields = {
 				title,
 				imageUrl: imageUrl
-					? `http://localhost:1000${imageUrl}`
-					: "http://localhost:1000/uploads/mike.png",
+					? `${process.env.REACT_APP_API_URL}${imageUrl}`
+					: `${process.env.REACT_APP_API_URL}/uploads/mike.png`,
 				tags,
 				text: value,
 			};
@@ -73,7 +73,7 @@ export const AddPost = () => {
 					console.log(data);
 					setTitle(data.title);
 					setValue(data.text);
-					setImageUrl(data.imageUrl.replace("http://localhost:1000", ""));
+					setImageUrl(data.imageUrl.replace(`${process.env.REACT_APP_API_URL}`, ""));
 					setTags(data.tags);
 				})
 				.catch((err) => alert(err));
@@ -124,7 +124,7 @@ export const AddPost = () => {
 					</Button>
 					<img
 						className={styles.image}
-						src={`http://localhost:1000${imageUrl}`}
+						src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
 						alt="Uploaded"
 					/>
 				</>
