@@ -4,7 +4,6 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Clear";
 import EditIcon from "@mui/icons-material/Edit";
 import EyeIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import CommentIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 
 import styles from "./Post.module.scss";
 import { UserInfo } from "../UserInfo";
@@ -20,8 +19,6 @@ export const Post = ({
 	imageUrl,
 	autor,
 	viewsCount,
-	commentsCount,
-	tags,
 	children,
 	isFullPost,
 	isLoading,
@@ -40,6 +37,8 @@ export const Post = ({
 			navigate(`/`);
 		}
 	};
+
+
 	return (
 		<div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>
 			{isEditable && (
@@ -56,7 +55,7 @@ export const Post = ({
 			)}
 			<img
 				className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-				src={imageUrl ? imageUrl : "../../../public/post-mike.png"}
+				src={imageUrl}
 				alt={title}
 			/>
 			<div className={styles.wrapper}>
@@ -67,22 +66,11 @@ export const Post = ({
 					>
 						{isFullPost ? title : <Link to={`/posts/${id}`}>{title}</Link>}
 					</h2>
-					<ul className={styles.tags}>
-						{tags.map((name) => (
-							<li key={name}>
-								<Link to={`/tag/${name}`}>{name}</Link>
-							</li>
-						))}
-					</ul>
 					{children && <div className={styles.content}>{children}</div>}
 					<ul className={styles.postDetails}>
 						<li>
 							<EyeIcon />
 							<span>{viewsCount}</span>
-						</li>
-						<li>
-							<CommentIcon />
-							<span>{commentsCount}</span>
 						</li>
 					</ul>
 				</div>

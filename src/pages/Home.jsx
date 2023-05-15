@@ -2,23 +2,18 @@ import React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Grid from "@mui/material/Grid";
-
 import { useDispatch, useSelector } from "react-redux";
-
 import { Post } from "../components/Post";
-import { TagsBlock } from "../components/TagsBlock";
-import { getPosts, getTags } from "../redux/slisec/postsSlice";
+import { getPosts } from "../redux/slisec/postsSlice";
 
 export const Home = () => {
 	const disp = useDispatch();
-	const { posts, tags } = useSelector((state) => state.posts);
+	const { posts } = useSelector((state) => state.posts);
 	const userData = useSelector((state) => state.sign.data);
 
 	const isLoadingPosts = posts.status === "load";
-	const isLoadingTags = tags.status === "load";
 	React.useEffect(() => {
 		disp(getPosts());
-		disp(getTags());
 	}, []);
 	return (
 		<>
@@ -44,7 +39,6 @@ export const Home = () => {
 								createdAt={obj.createdAt}
 								viewsCount={obj.viewsCount}
 								commentsCount={3}
-								tags={obj.tags}
 								isEditable={userData?._id === obj.autor._id}
 							/>
 						)

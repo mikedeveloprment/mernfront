@@ -24,8 +24,9 @@ export const Login = () => {
 	});
 	const onSubmit = async (values) => {
 		const { payload } = await disp(getSign(values));
+		console.log(payload);
 		if (!payload) {
-			return alert("не вийшло ввійти");
+			alert("не вийшло ввійти");
 		}
 		if (payload.token) {
 			window.localStorage.setItem("token-sign", payload.token)
