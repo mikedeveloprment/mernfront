@@ -22,8 +22,8 @@ export const Home = () => {
 				value={0}
 				aria-label="basic tabs example"
 			>
-				<Tab label="Новые" />
-				<Tab label="Популярные" />
+				<Tab label="Нові" />
+				<Tab label="Популярні" />
 			</Tabs>
 				<Grid xs={1} item>
 					{(isLoadingPosts ? [...Array(5)] : posts.items).map((obj, index) =>
