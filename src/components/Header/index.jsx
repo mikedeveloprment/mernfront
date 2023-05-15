@@ -28,23 +28,23 @@ export const Header = () => {
 						{isSign ? (
 							<>
 								<Link to="/create">
-									<Button variant="contained">Написать статью</Button>
+									<Button variant="contained">Створити пост</Button>
 								</Link>
 								<Button
 									onClick={onClickLogout}
 									variant="contained"
 									color="error"
 								>
-									Выйти
+									Вийти
 								</Button>
 							</>
 						) : (
 							<>
 								<Link to="/sign">
-									<Button variant="outlined">Войти</Button>
+									<Button variant="outlined">Війти</Button>
 								</Link>
 								<Link to="/login">
-									<Button variant="contained">Создать аккаунт</Button>
+									<Button variant="contained">Створити акаунт</Button>
 								</Link>
 							</>
 						)}

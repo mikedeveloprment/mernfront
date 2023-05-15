@@ -84,7 +84,7 @@ export const AddPost = () => {
 			spellChecker: false,
 			maxHeight: "400px",
 			autofocus: true,
-			placeholder: "Введите текст...",
+			placeholder: "Напишіть інформацію",
 			status: false,
 			autosave: {
 				enabled: true,
@@ -105,7 +105,7 @@ export const AddPost = () => {
 					fileInputRef.current.click();
 				}}
 			>
-				Загрузить превью
+				Імпортувати фото
 			</Button>
 			<input
 				type="file"
@@ -120,7 +120,7 @@ export const AddPost = () => {
 						color="error"
 						onClick={onClickRemoveImage}
 					>
-						Удалить
+						Видалити
 					</Button>
 					<img
 						className={styles.image}
@@ -136,17 +136,9 @@ export const AddPost = () => {
 				classes={{ root: styles.title }}
 				variant="standard"
 				value={title}
-				placeholder="Заголовок статьи..."
+				placeholder="Введіть заголовок..."
 				fullWidth
 				onChange={(e) => setTitle(e.target.value)}
-			/>
-			<TextField
-				classes={{ root: styles.tags }}
-				variant="standard"
-				placeholder="Тэги"
-				fullWidth
-				value={tags}
-				onChange={(e) => setTags(e.target.value)}
 			/>
 			<SimpleMDE
 				className={styles.editor}
@@ -156,10 +148,10 @@ export const AddPost = () => {
 			/>
 			<div className={styles.buttons}>
 				<Button onClick={onSubmit} size="large" variant="contained">
-					{isEditing ? "Змінити" : "Опубликовать"}
+					{isEditing ? "Змінити" : "Створити"}
 				</Button>
 				<Link to="/">
-					<Button size="large">Отмена</Button>
+					<Button size="large">Відміна</Button>
 				</Link>
 			</div>
 		</Paper>
