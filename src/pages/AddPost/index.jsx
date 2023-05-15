@@ -48,8 +48,8 @@ export const AddPost = () => {
 			const fields = {
 				title,
 				imageUrl: imageUrl
-					? `https://mernbackend1.herokuapp.com/${imageUrl}`
-					: `https://mernbackend1.herokuapp.com//uploads/mike.png`,
+					? `https://mernbackend1.herokuapp.com${imageUrl}`
+					: `https://mernbackend1.herokuapp.com/uploads/mike.png`,
 				tags,
 				text: value,
 			};
