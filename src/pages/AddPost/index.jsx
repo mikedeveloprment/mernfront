@@ -49,7 +49,7 @@ export const AddPost = () => {
 				title,
 				imageUrl: imageUrl
 					? `${process.env.REACT_APP_API_URL}${imageUrl}`
-					: `${process.env.REACT_APP_API_URL}/uploads/mike.png`,
+					: `../../../public/mike.png`,
 				tags,
 				text: value,
 			};
